@@ -1,10 +1,12 @@
-class GoogleData(object):
+class GoogleData():
+	
 	
 	def __init__(self, fileName):
 		# initialise the object with the source of the data
 		# Input: string of full file name
 		self.source = "data/" + fileName + ".in"
 
+	
 	def vercx(self):
 
 		# Description: takes self, reads first line, and returns list of VERCX
@@ -15,6 +17,7 @@ class GoogleData(object):
 			VERCX = [int(x) for x in f.readline().split()]
 		return VERCX
 
+	
 	def v_data(self):
 
 		# Description: takes self and generates a list with all the video sizes in MB
@@ -30,6 +33,7 @@ class GoogleData(object):
 		# return the list
 		return v_size_list
 
+	
 	def e_data(self):
 
 		# Description: takes self and generates a list of lists
@@ -93,6 +97,7 @@ class GoogleData(object):
 			return [d_to_e_latency, c_latency]
 
 
+	
 	def r_data(self):
 
 		# Description: takes self and generates a list of lists describing all the video requests
