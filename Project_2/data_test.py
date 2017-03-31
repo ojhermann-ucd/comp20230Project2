@@ -65,8 +65,64 @@ class TestVERCX(unittest.TestCase):
 			v_data = dc.GoogleData(f).v_data()
 			lenV = len(v_data)
 			self.assertEqual(lenV, V)
-			print("-", f)		
+			print("-", f)
 
+	def test_len_e_data(self):
+
+		# imports
+		import data_class as dc
+
+		# get the test files
+		theFiles = TestFiles.get_files(self)
+
+		# check the files
+		print("")
+		print(".e_data() works for:")
+		for f in theFiles:
+			# E and C
+			E = dc.GoogleData(f).vercx()[1]
+			C = dc.GoogleData(f).vercx()[3]
+			# e_data
+			e_data = dc.GoogleData(f).e_data()
+			# e_data outputs
+			d_to_e_latency = e_data[0]
+			c_latency = e_data[1]
+			# tests
+			lenDtoE = len(d_to_e_latency)
+			lenC = len(c_latency)
+			self.assertEqual(lenDtoE, E)
+			self.assertEqual(lenC, E)
+			for i in range(E):
+				self.assertEqual(len(c_latency[i]), C)
+			print("-", f)
+
+
+	def test_len_r_data(self):
+
+			# imports
+			import data_class as dc
+
+			# get the test files
+			theFiles = TestFiles.get_files(self)
+
+			# check the files
+			print("")
+			print(".r_data() works for:")
+			for f in theFiles:
+				# R
+				R = dc.GoogleData(f).vercx()[2]
+
+				# r_data
+				r_data = dc.GoogleData(f).r_data()
+				vid_list = r_data[0]
+				ep_list = r_data[1]
+				req_list = r_data[2]
+
+				# tests
+				self.assertEqual(len(vid_list), R)
+				self.assertEqual(len(ep_list), R)
+				self.assertEqual(len(req_list), R)
+				print("-", f)
 
 
 # run the unit test
