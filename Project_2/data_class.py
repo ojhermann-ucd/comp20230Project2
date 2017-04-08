@@ -96,7 +96,6 @@ class GoogleData():
 
 			return [d_to_e_latency, c_latency]
 
-
 	
 	def r_data(self):
 
